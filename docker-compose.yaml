@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  go-lambda-docker-lambda:
+    build:
+      context: .
+      dockerfile: ./docker/lambda/Dockerfile
+    image: go-lambda-docker-lambda
+    container_name: go-lambda-docker-lambda
+    volumes:
+      - $PWD/.bin/sample:/main
+  go-lambda-docker-go:
+    build:
+      context: .
+      dockerfile: ./docker/go/Dockerfile
+    image: go-lambda-docker-go
+    container_name: go-lambda-docker-go
+    working_dir: /workspace
+    volumes:
+      - $PWD:/workspace/
